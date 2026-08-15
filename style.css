@@ -279,3 +279,111 @@ body.category-page .content{min-width:0 !important}
 body.category-page .grid{
   width:100% !important;
 }
+
+/* =========================================================
+   ARGAMES HOME PAGE - DEFINITIVE GAME GRID FIX
+   The previous CSS-columns masonry could keep cards in the
+   first column in some browsers. Use CSS Grid instead.
+   ========================================================= */
+#popularGrid.mosaic-grid{
+  display:grid !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  grid-auto-rows:190px !important;
+  grid-auto-flow:dense !important;
+  gap:12px !important;
+  align-items:stretch !important;
+}
+#popularGrid.mosaic-grid .card{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  margin:0 !important;
+  grid-column:span 1 !important;
+  grid-row:span 1 !important;
+  break-inside:auto !important;
+}
+#popularGrid.mosaic-grid .card.tile-wide{
+  grid-column:span 2 !important;
+  grid-row:span 1 !important;
+}
+#popularGrid.mosaic-grid .card.tile-tall{
+  grid-column:span 1 !important;
+  grid-row:span 2 !important;
+}
+#popularGrid.mosaic-grid .card.tile-feature{
+  grid-column:span 2 !important;
+  grid-row:span 2 !important;
+}
+#popularGrid.mosaic-grid .card .thumb{
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  aspect-ratio:auto !important;
+}
+#popularGrid.mosaic-grid .card .thumb img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+#popularGrid.mosaic-grid .card .info{display:none !important}
+
+/* Keep the hover-only title and green orbit lines. */
+#popularGrid.mosaic-grid .card .hover-name{
+  opacity:0 !important;
+  transform:translateY(8px) !important;
+}
+#popularGrid.mosaic-grid .card:hover .hover-name{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+}
+#popularGrid.mosaic-grid .card:hover:before,
+#popularGrid.mosaic-grid .card:hover:after{
+  opacity:1 !important;
+}
+
+/* Desktop: use the whole available content width. */
+@media (min-width:1201px){
+  #popularGrid.mosaic-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+    grid-auto-rows:185px !important;
+  }
+}
+@media (max-width:1200px) and (min-width:901px){
+  #popularGrid.mosaic-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    grid-auto-rows:180px !important;
+    gap:10px !important;
+  }
+}
+@media (max-width:900px) and (min-width:561px){
+  #popularGrid.mosaic-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    grid-auto-rows:175px !important;
+    gap:9px !important;
+  }
+}
+@media (max-width:560px){
+  #popularGrid.mosaic-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    grid-auto-rows:155px !important;
+    gap:8px !important;
+  }
+  #popularGrid.mosaic-grid .card.tile-feature{
+    grid-column:span 2 !important;
+    grid-row:span 2 !important;
+  }
+}
+
+/* Ensure the home content itself can expand normally. */
+body:not(.category-page) main .content{
+  min-width:0 !important;
+  width:100% !important;
+}
+body:not(.category-page) #popular{
+  width:100% !important;
+}
