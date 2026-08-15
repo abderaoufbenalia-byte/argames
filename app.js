@@ -148,3 +148,51 @@ async function init(){
  buildCats();translate();render();
 }
 init();
+
+/* Mobile navigation */
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const sidebar = document.getElementById("categories");
+  const backdrop = document.getElementById("mobileBackdrop");
+  const searchBox = document.querySelector(".search");
+  const searchInput = document.getElementById("search");
+
+  const closeMenu = () => {
+    if (!sidebar || !backdrop || !menuBtn) return;
+    sidebar.classList.remove("mobile-open");
+    backdrop.classList.remove("mobile-open");
+    menuBtn.setAttribute("aria-expanded","false");
+    menuBtn.textContent = "☰";
+  };
+
+  if (menuBtn && sidebar && backdrop) {
+    menuBtn.addEventListener("click", () => {
+      const open = sidebar.classList.toggle("mobile-open");
+      backdrop.classList.toggle("mobile-open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.textContent = open ? "✕" : "☰";
+    });
+    backdrop.addEventListener("click", closeMenu);
+    sidebar.addEventListener("click", (e) => {
+      if (e.target.closest("a,button") && !e.target.closest("#mobileMenuBtn")) {
+        setTimeout(closeMenu, 80);
+      }
+    });
+  }
+
+  if (searchBox && searchInput) {
+    searchBox.addEventListener("click", () => {
+      if (window.matchMedia("(max-width:760px)").matches && !searchBox.classList.contains("mobile-search-open")) {
+        searchBox.classList.add("mobile-search-open");
+        searchInput.focus();
+      }
+    });
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        searchBox.classList.remove("mobile-search-open");
+        searchInput.blur();
+      }
+    });
+  }
+});
