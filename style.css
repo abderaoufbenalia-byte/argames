@@ -185,3 +185,97 @@ main.cat-page{
   .mosaic-grid .card.tile-tall .thumb{height:245px !important}
   .mosaic-grid .card.tile-feature .thumb{height:280px !important}
 }
+
+/* =========================================================
+   ARGAMES FINAL MOSAIC FIX
+   Fix: cards previously collapsed into the first column because
+   column-fill:auto was used with an auto-height container.
+   ========================================================= */
+#popularGrid.mosaic-grid{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  column-count:6 !important;
+  column-gap:12px !important;
+  column-fill:balance !important;
+  column-width:auto !important;
+}
+#popularGrid.mosaic-grid .card{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  margin:0 0 12px !important;
+  break-inside:avoid !important;
+  -webkit-column-break-inside:avoid !important;
+  page-break-inside:avoid !important;
+  grid-column:auto !important;
+  grid-row:auto !important;
+  overflow:hidden !important;
+  vertical-align:top;
+}
+#popularGrid.mosaic-grid .card .thumb{
+  width:100% !important;
+  height:190px !important;
+  min-height:0 !important;
+  aspect-ratio:1.42 / 1;
+}
+#popularGrid.mosaic-grid .card.tile-wide .thumb{height:230px !important}
+#popularGrid.mosaic-grid .card.tile-tall .thumb{height:285px !important}
+#popularGrid.mosaic-grid .card.tile-feature .thumb{height:330px !important}
+
+#popularGrid.mosaic-grid .card .hover-name{
+  opacity:0;
+  transform:translateY(8px);
+}
+#popularGrid.mosaic-grid .card:hover .hover-name{
+  opacity:1;
+  transform:translateY(0);
+}
+#popularGrid.mosaic-grid .card .info{display:none !important}
+
+/* Keep the two green orbit lights visible during hover. */
+#popularGrid.mosaic-grid .card:hover:before,
+#popularGrid.mosaic-grid .card:hover:after{opacity:1 !important}
+
+/* Responsive masonry */
+@media (max-width:1200px){
+  #popularGrid.mosaic-grid{column-count:4 !important;column-gap:10px !important}
+  #popularGrid.mosaic-grid .card .thumb{height:185px !important}
+  #popularGrid.mosaic-grid .card.tile-wide .thumb{height:220px !important}
+  #popularGrid.mosaic-grid .card.tile-tall .thumb{height:270px !important}
+  #popularGrid.mosaic-grid .card.tile-feature .thumb{height:310px !important}
+}
+@media (max-width:850px){
+  #popularGrid.mosaic-grid{column-count:3 !important;column-gap:9px !important}
+  #popularGrid.mosaic-grid .card{margin-bottom:9px !important}
+  #popularGrid.mosaic-grid .card .thumb{height:165px !important}
+  #popularGrid.mosaic-grid .card.tile-wide .thumb{height:195px !important}
+  #popularGrid.mosaic-grid .card.tile-tall .thumb{height:245px !important}
+  #popularGrid.mosaic-grid .card.tile-feature .thumb{height:275px !important}
+}
+@media (max-width:560px){
+  #popularGrid.mosaic-grid{column-count:2 !important;column-gap:8px !important}
+  #popularGrid.mosaic-grid .card{margin-bottom:8px !important}
+  #popularGrid.mosaic-grid .card .thumb{height:150px !important}
+  #popularGrid.mosaic-grid .card.tile-wide .thumb{height:175px !important}
+  #popularGrid.mosaic-grid .card.tile-tall .thumb{height:210px !important}
+  #popularGrid.mosaic-grid .card.tile-feature .thumb{height:235px !important}
+}
+
+/* Normal sections stay as compact grids. */
+#newGrid,#multiGrid,#topGrid{
+  display:grid !important;
+}
+
+/* Category pages: full-width game area */
+body.category-page main{
+  width:min(1500px,96%) !important;
+  grid-template-columns:210px minmax(0,1fr) !important;
+}
+body.category-page .right-rail{display:none !important}
+body.category-page .content{min-width:0 !important}
+body.category-page .grid{
+  width:100% !important;
+}
