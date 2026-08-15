@@ -91,3 +91,97 @@ main{width:min(1500px,96%);margin:0 auto;padding-bottom:65px;display:grid;grid-t
 }
 
 .seo-intro{margin:22px 0;padding:18px 20px;border:1px solid #1d2a20;border-radius:14px;background:#0a100c}.seo-intro h2{margin:0 0 7px;font:700 17px Outfit;color:#dfe8e1}.seo-intro p{margin:0;color:#829087;font-size:9.5px;line-height:1.7;max-width:980px}.seo-category-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.seo-category-links a{font-size:8px;color:#8fd68b;border:1px solid #263b2a;border-radius:99px;padding:6px 9px;text-decoration:none}.seo-category-links a:hover{color:#6dff52;border-color:#4a814a}.pagination a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.pagination .page-btn.active{color:#061007;background:#6dff52}
+
+/* =========================================================
+   ARGAMES LAYOUT FIX v5
+   1) Category pages: don't inherit the 3-column site <main> grid.
+   2) Mosaic catalog: masonry-style columns eliminate large empty holes.
+   ========================================================= */
+
+/* Category pages were using the global main{display:grid;...} rule.
+   This caused their content to collapse into the 210px sidebar column. */
+main.cat-page{
+  display:block !important;
+  width:min(1200px,96%) !important;
+  max-width:1200px !important;
+  margin:0 auto !important;
+  padding:28px 0 65px !important;
+  min-width:0 !important;
+}
+.cat-page h1{
+  margin:8px 0 10px !important;
+  text-align:left !important;
+  font-size:clamp(34px,5vw,52px) !important;
+}
+.cat-page p{max-width:900px}
+.cat-grid{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+.cat-game{min-width:0}
+.cat-game img{width:100%;height:150px;object-fit:cover}
+
+/* Masonry-like catalog: cards flow vertically without the giant
+   blank spaces produced by mixed CSS grid row-spans. */
+.mosaic-grid{
+  display:block !important;
+  column-count:6 !important;
+  column-gap:12px !important;
+  column-fill:auto !important;
+  height:auto !important;
+}
+.mosaic-grid .card{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  margin:0 0 12px !important;
+  break-inside:avoid !important;
+  -webkit-column-break-inside:avoid !important;
+  page-break-inside:avoid !important;
+  grid-column:auto !important;
+  grid-row:auto !important;
+}
+.mosaic-grid .card .thumb{
+  width:100% !important;
+  height:180px !important;
+  min-height:0 !important;
+}
+.mosaic-grid .card.tile-wide .thumb{height:225px !important}
+.mosaic-grid .card.tile-tall .thumb{height:285px !important}
+.mosaic-grid .card.tile-feature .thumb{height:335px !important}
+.mosaic-grid .card .info{display:none !important}
+
+/* Keep the green orbit/shimmer effect working on the new masonry cards. */
+.mosaic-grid .card:before,.mosaic-grid .card:after{
+  z-index:8 !important;
+}
+
+/* Avoid an artificial "bottom of a grid row" gap. */
+.mosaic-grid:after{content:none !important}
+
+@media(max-width:1200px){
+  .mosaic-grid{column-count:4 !important}
+  .cat-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+}
+@media(max-width:850px){
+  .mosaic-grid{column-count:3 !important;column-gap:9px !important}
+  .mosaic-grid .card{margin-bottom:9px !important}
+  .mosaic-grid .card .thumb{height:170px !important}
+  .mosaic-grid .card.tile-wide .thumb{height:205px !important}
+  .mosaic-grid .card.tile-tall .thumb{height:245px !important}
+  .mosaic-grid .card.tile-feature .thumb{height:285px !important}
+  .cat-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+}
+@media(max-width:600px){
+  main.cat-page{width:94% !important;padding-top:18px !important}
+  .cat-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:9px !important}
+  .cat-game img{height:125px}
+  .mosaic-grid{column-count:2 !important;column-gap:9px !important}
+  .mosaic-grid .card .thumb{height:180px !important}
+  .mosaic-grid .card.tile-wide .thumb{height:210px !important}
+  .mosaic-grid .card.tile-tall .thumb{height:245px !important}
+  .mosaic-grid .card.tile-feature .thumb{height:280px !important}
+}
