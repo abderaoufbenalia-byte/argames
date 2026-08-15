@@ -77,9 +77,12 @@ function card(g,i){
   <div class="info"><h3>${esc(prettyName(g.name))}</h3><div class="meta"><span>${esc(String(g.category||"").replace(/ Games$/,""))}</span>${g.rating&&Number(g.rating)>0?`<span>★ ${esc(g.rating)}</span>`:""}</div></div>
  </a>`;
 }
+function isPhone(){return window.matchMedia && window.matchMedia("(max-width:760px)").matches}
+function mobileCompatible(g){return String(g.mobile)==="1"}
 function filter(g){
  const hay=(String(g.name||"")+" "+(Array.isArray(g.tags)?g.tags.join(" "):String(g.tags||""))).toLowerCase();
- return (cat==="all"||g.category===cat)&&(!query||hay.includes(query));
+ const phoneOK=!isPhone()||mobileCompatible(g);
+ return phoneOK&&(cat==="all"||g.category===cat)&&(!query||hay.includes(query));
 }
 function pagination(totalPages){
  const el=$("pagination"); if(!el)return;
@@ -118,7 +121,7 @@ function render(){
  $("popularGrid").innerHTML=current.map(card).join("");
  $("pageInfo").textContent=`${T[lang].page||"PAGE"} ${page} / ${totalPages}`;
  $("catalogCount").textContent=visible.length.toLocaleString();
- $("totalGames").textContent=games.length.toLocaleString();
+ $("totalGames").textContent=(isPhone()?games.filter(mobileCompatible).length:games.length).toLocaleString();
  pagination(totalPages);
 
  const fresh=[...games].sort((a,b)=>Number(b.id)-Number(a.id)).filter(filter).slice(0,12);
@@ -194,5 +197,14 @@ document.addEventListener("DOMContentLoaded", () => {
         searchInput.blur();
       }
     });
+  }
+});
+
+window.addEventListener("resize",()=>{
+  const now=window.matchMedia("(max-width:760px)").matches;
+  if(typeof window.__argamesPhoneState==="undefined") window.__argamesPhoneState=now;
+  if(window.__argamesPhoneState!==now){
+    window.__argamesPhoneState=now;
+    page=1;visitOrder=[];render();
   }
 });
