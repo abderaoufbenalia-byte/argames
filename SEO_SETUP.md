@@ -26,3 +26,18 @@ Avoid creating thousands of near-identical pages solely for search engines. Keep
 - Robots: https://argames-dz.online/robots.txt
 
 The sitemap included in this package was generated from the bundled games catalog.
+
+
+## Indexing checklist for https://argames-dz.online
+
+1. Upload this build to the live domain and make sure `https://argames-dz.online/` returns HTTP 200.
+2. Confirm these URLs are publicly reachable:
+   - https://argames-dz.online/robots.txt
+   - https://argames-dz.online/sitemap.xml
+3. In Google Search Console, add/verify the domain property and submit:
+   `https://argames-dz.online/sitemap.xml`
+4. Use URL Inspection on `https://argames-dz.online/` and request indexing.
+5. In Bing Webmaster Tools, verify the domain, submit the same sitemap, and use URL Inspection/URL Submission.
+6. After publishing, search `site:argames-dz.online` rather than only the brand name. Indexing is not instantaneous.
+
+The sitemap in this build contains the site's homepage, category pages and game URLs and is within Google's single-sitemap limit.
