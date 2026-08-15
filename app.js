@@ -18,6 +18,25 @@ const prettyName=s=>{
  const acronyms=new Set(["3D","2D","VR","FPS","RPG","IO","HTML5","PVP","PVE","AI","NBA","FIFA","FC","UFO","DIY"]);
  return s.split(" ").map(w=>acronyms.has(w.toUpperCase())?w.toUpperCase():w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(" ");
 };
+
+/* ARGAMES ad slot: inserted into the rendered game grid, never the header. */
+function injectBetweenGamesAd(grid){
+  if(!grid || grid.querySelector(".between-games-ad")) return;
+  const cards=[...grid.children].filter(el=>el.classList && (el.classList.contains("card") || el.classList.contains("game-card") || el.querySelector(".card,.game-card")));
+  if(cards.length < 4) return;
+  const slot=document.createElement("div");
+  slot.className="live-ad native-ad between-games-ad";
+  slot.setAttribute("data-ad-type","native");
+  slot.innerHTML='<div class="ad-label">Advertisement</div><div class="native-ad-code"><div id="container-cb03e38225c1045938c18a27208084ba"></div></div>';
+  const script=document.createElement("script");
+  script.async=true;
+  script.setAttribute("data-cfasync","false");
+  script.src="https://pl30861393.effectivecpmnetwork.com/cb03e38225c1045938c18a27208084ba/invoke.js";
+  slot.querySelector(".native-ad-code").prepend(script);
+  const middle=Math.max(3,Math.floor(cards.length/2));
+  cards[middle-1].after(slot);
+}
+
 function seededRand(seed){let t=seed>>>0;return()=>{t+=0x6D2B79F5;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 function shuffle(arr,seed){const a=[...arr],r=seededRand(seed);for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function iconForCategory(c){
@@ -119,6 +138,7 @@ function render(){
  const start=(page-1)*PAGE_SIZE;
  const current=visitOrder.slice(start,start+PAGE_SIZE);
  $("popularGrid").innerHTML=current.map(card).join("");
+ injectBetweenGamesAd($("popularGrid"));
  $("pageInfo").textContent=`${T[lang].page||"PAGE"} ${page} / ${totalPages}`;
  $("catalogCount").textContent=visible.length.toLocaleString();
  $("totalGames").textContent=(isPhone()?games.filter(mobileCompatible).length:games.length).toLocaleString();
@@ -208,3 +228,6 @@ window.addEventListener("resize",()=>{
     page=1;visitOrder=[];render();
   }
 });
+
+
+
