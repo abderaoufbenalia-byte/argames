@@ -949,3 +949,118 @@ body:not(.category-page) #popular{
     margin:12px 0;
   }
 }
+
+/* ===== ARGAMES FINAL MOBILE / SQUARE GAMES / 300x100 AD SPACES ===== */
+.card,
+.card.tile-wide,
+.card.tile-tall,
+.card.tile-feature,
+.card.tile-normal,
+.card.tile-square{
+  grid-column:span 1 !important;
+  grid-row:span 1 !important;
+  aspect-ratio:auto !important;
+}
+.card .thumb,
+.mosaic-grid .card .thumb{
+  width:100%;
+  aspect-ratio:1 / 1 !important;
+  height:auto !important;
+  min-height:0 !important;
+}
+.mosaic-grid .card .thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.grid{
+  grid-auto-flow:row;
+}
+.grid-banner-ad{
+  grid-column:1 / -1 !important;
+  width:300px;
+  height:100px;
+  max-width:100%;
+  margin:14px auto;
+  box-sizing:border-box;
+  border:1px dashed rgba(109,255,82,.35);
+  border-radius:10px;
+  background:rgba(7,14,10,.72);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#65736a;
+  font:800 12px Outfit;
+  letter-spacing:1.5px;
+}
+.grid-banner-ad small{
+  margin-top:5px;
+  font:700 8px "DM Sans";
+  letter-spacing:1px;
+  color:#405147;
+}
+.banner-ad-space{
+  width:300px;
+  height:100px;
+  max-width:calc(100% - 24px);
+  margin:22px auto;
+  box-sizing:border-box;
+  border:1px dashed rgba(109,255,82,.35);
+  border-radius:10px;
+  background:rgba(7,14,10,.72);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#65736a;
+  font:800 12px Outfit;
+  letter-spacing:1.5px;
+}
+.banner-ad-space small{
+  margin-top:5px;
+  font:700 8px "DM Sans";
+  letter-spacing:1px;
+  color:#405147;
+}
+@media(max-width:760px){
+  /* First viewport contains the site/game content, never an ad. */
+  .header-ad,.ad.native-ad{display:none !important}
+  main#home{display:block !important}
+  .content{width:100%;min-width:0}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:9px !important}
+  .card{width:100%;min-width:0}
+  .card .thumb{aspect-ratio:1/1 !important}
+  .grid-banner-ad{width:300px;height:100px;margin:16px auto}
+  .banner-ad-space{width:300px;height:100px;margin:20px auto}
+  .section{margin-top:28px}
+}
+@media(max-width:360px){
+  .grid{gap:7px !important}
+  .grid-banner-ad,.banner-ad-space{width:300px;height:100px}
+}
+
+/* ARGAMES ad slots: fixed 300x100 banner area, never a header ad. */
+.argames-ad-slot{
+  position:relative;
+  width:300px;
+  height:100px;
+  max-width:calc(100% - 24px);
+  min-height:100px;
+  box-sizing:border-box;
+}
+.argames-ad-slot:empty::before{
+  content:"ADVERTISEMENT";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:700 10px "DM Sans",sans-serif;
+  letter-spacing:1.5px;
+  color:#405147;
+  pointer-events:none;
+}
+@media(max-width:760px){
+  .argames-ad-slot{width:300px;height:100px;min-height:100px;margin-left:auto;margin-right:auto}
+}

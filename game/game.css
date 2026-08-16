@@ -420,3 +420,8 @@ footer{text-align:center;border-top:1px solid var(--line);padding:20px;color:#64
     margin:12px 0;
   }
 }
+
+/* ARGAMES_ALL_PAGES_AD_CSS */
+.argames-ad-slot{position:relative;width:300px;height:100px;min-height:100px;max-width:calc(100% - 24px);margin:18px auto;box-sizing:border-box}
+.argames-ad-slot:empty::before{content:"ADVERTISEMENT";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 10px "DM Sans",sans-serif;letter-spacing:1.5px;color:#405147}
+@media(max-width:760px){.argames-ad-slot{width:300px;height:100px;min-height:100px;margin:14px auto}}

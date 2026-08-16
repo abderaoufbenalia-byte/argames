@@ -70,8 +70,7 @@ function translate(){
  const allBtn=document.querySelector('.cat[data-cat="all"]');if(allBtn)allBtn.innerHTML=`<span class="cat-icon">⌂</span><span>${t.all}</span>`;
 }
 function card(g,i){
- const patterns=["tile-wide","tile-tall","tile-normal","tile-feature","tile-normal","tile-wide","tile-normal","tile-tall"];
- const cls=patterns[i%patterns.length];
+ const cls="tile-square";
  const multi=g.multiplayer?'<span class="badge">🌐 MULTIPLAYER</span>':"";
  return `<a class="card ${cls}" href="game/game.html?id=${encodeURIComponent(g.id)}" title="${esc(prettyName(g.name))}">
   <div class="thumb">${multi}<img loading="lazy" src="${esc(g.image)}" alt="${esc(prettyName(g.name))}" onerror="this.style.opacity=.08"><span class="hover-name">${esc(prettyName(g.name))}</span></div>
@@ -119,8 +118,14 @@ function render(){
  if(page>totalPages)page=totalPages;
  const start=(page-1)*PAGE_SIZE;
  const current=visitOrder.slice(start,start+PAGE_SIZE);
- $("popularGrid").innerHTML=current.map(card).join("");
- injectBetweenGamesAd($("popularGrid"));
+ $("popularGrid").innerHTML=current.map((g,i)=>{
+   const item=card(g,i);
+   return i===5
+     ? item+`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499085" aria-label="Advertisement 300 x 100"></div>`
+     : i===11
+     ? item+`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499086" aria-label="Advertisement 300 x 100"></div>`
+     : item;
+ }).join("");
  $("pageInfo").textContent=`${T[lang].page||"PAGE"} ${page} / ${totalPages}`;
  $("catalogCount").textContent=visible.length.toLocaleString();
  $("totalGames").textContent=(isPhone()?games.filter(mobileCompatible).length:games.length).toLocaleString();
@@ -129,7 +134,12 @@ function render(){
  const fresh=[...games].sort((a,b)=>Number(b.id)-Number(a.id)).filter(filter).slice(0,12);
  const multi=games.filter(g=>g.multiplayer&&(!query||String(g.name).toLowerCase().includes(query))).slice(0,12);
  const top=[...visible].sort((a,b)=>(Number(b.rating)-Number(a.rating))||(Number(b.plays)-Number(a.plays))).slice(0,12);
- $("newGrid").innerHTML=fresh.map((g,i)=>card(g,i)).join("");
+ $("newGrid").innerHTML=fresh.map((g,i)=>{
+   const item=card(g,i);
+   return (i===5 || i===11)
+     ? item+`<div class="grid-banner-ad"><span>AD SPACE</span><small>300 × 100</small></div>`
+     : item;
+ }).join("");
  $("multiGrid").innerHTML=multi.map((g,i)=>card(g,i)).join("");
  $("topGrid").innerHTML=top.map((g,i)=>card(g,i)).join("");
  const heroPick=current[0]||fresh[0];
