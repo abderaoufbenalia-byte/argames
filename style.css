@@ -1142,3 +1142,13 @@ body:not(.category-page) #popular{
 /* Category thumbnails are square too. */
 .cat-grid .cat-game{min-width:0;overflow:hidden}
 .cat-grid .cat-game img{display:block;width:100% !important;height:auto !important;aspect-ratio:1 / 1 !important;object-fit:cover !important}
+
+
+/* ARGAMES AD ROW + GRID FINAL FIX v20260816.2 */
+.ad-row{width:100%;display:flex;justify-content:center;align-items:center;min-height:0;margin:0;padding:0}
+.ad-row:empty{display:none}
+.grid-banner-ad{grid-column:1 / -1 !important;justify-self:center !important;align-self:center !important}
+.grid-banner-ad.argames-ad-slot{width:300px !important;height:100px !important;min-height:100px !important;margin:18px auto !important}
+.grid .card,.mosaic-grid .card,#popularGrid .card,#newGrid .card,#multiGrid .card,#topGrid .card{grid-column:auto !important;grid-row:auto !important;aspect-ratio:1 / 1 !important}
+.grid .card .thumb,.mosaic-grid .card .thumb,#popularGrid .card .thumb,#newGrid .card .thumb,#multiGrid .card .thumb,#topGrid .card .thumb{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;aspect-ratio:1 / 1 !important}
+@media(max-width:560px){.ad-row{width:100%}.grid-banner-ad.argames-ad-slot{width:300px !important;max-width:calc(100vw - 20px) !important;height:100px !important;min-height:100px !important;margin:16px auto !important}.grid,.mosaic-grid,#popularGrid,#newGrid,#multiGrid,#topGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-auto-flow:row !important}.grid .card,.mosaic-grid .card,#popularGrid .card,#newGrid .card,#multiGrid .card,#topGrid .card{grid-column:auto !important;grid-row:auto !important;aspect-ratio:1 / 1 !important}}
