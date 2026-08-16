@@ -1,0 +1,1 @@
+ARGAMES rebuild 2026-08-16 — ClickAdilla 1499097 + strict square grid + no header ad + cache-busted local assets
