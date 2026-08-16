@@ -121,9 +121,9 @@ function render(){
  $("popularGrid").innerHTML=current.map((g,i)=>{
    const item=card(g,i);
    return i===5
-     ? item+`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499085" aria-label="Advertisement 300 x 100"></div>`
+     ? item+`<div class="argames-ad-slot grid-banner-ad" data-banner-id="1499085" aria-label="Advertisement 300 x 100"></div>`
      : i===11
-     ? item+`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499086" aria-label="Advertisement 300 x 100"></div>`
+     ? item+`<div class="argames-ad-slot grid-banner-ad" data-banner-id="1499086" aria-label="Advertisement 300 x 100"></div>`
      : item;
  }).join("");
  $("pageInfo").textContent=`${T[lang].page||"PAGE"} ${page} / ${totalPages}`;
