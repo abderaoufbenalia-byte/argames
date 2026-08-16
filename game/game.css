@@ -429,3 +429,6 @@ footer{text-align:center;border-top:1px solid var(--line);padding:20px;color:#64
 .banner-ad-space.argames-ad-slot small{font-size:8px;opacity:.45}
 .related-card img{width:100%;aspect-ratio:1/1;height:auto !important;object-fit:cover}
 @media(max-width:620px){.banner-ad-space.argames-ad-slot{width:300px;max-width:calc(100vw - 20px);height:100px;min-height:100px;margin:12px auto}}
+
+/* FINAL ad separation */
+.banner-ad-space{position:relative!important;clear:both!important;display:flex!important;flex:none!important;width:300px!important;height:100px!important;min-height:100px!important;margin:20px auto!important}

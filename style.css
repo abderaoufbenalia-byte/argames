@@ -1152,3 +1152,11 @@ body:not(.category-page) #popular{
 .grid .card,.mosaic-grid .card,#popularGrid .card,#newGrid .card,#multiGrid .card,#topGrid .card{grid-column:auto !important;grid-row:auto !important;aspect-ratio:1 / 1 !important}
 .grid .card .thumb,.mosaic-grid .card .thumb,#popularGrid .card .thumb,#newGrid .card .thumb,#multiGrid .card .thumb,#topGrid .card .thumb{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;aspect-ratio:1 / 1 !important}
 @media(max-width:560px){.ad-row{width:100%}.grid-banner-ad.argames-ad-slot{width:300px !important;max-width:calc(100vw - 20px) !important;height:100px !important;min-height:100px !important;margin:16px auto !important}.grid,.mosaic-grid,#popularGrid,#newGrid,#multiGrid,#topGrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-auto-flow:row !important}.grid .card,.mosaic-grid .card,#popularGrid .card,#newGrid .card,#multiGrid .card,#topGrid .card{grid-column:auto !important;grid-row:auto !important;aspect-ratio:1 / 1 !important}}
+
+/* ===== FINAL 2026-08-16.3: ads are GRID ITEMS, never overlays ===== */
+.grid{position:relative;display:grid!important;align-items:start!important;grid-auto-flow:row!important;overflow:visible!important}
+.grid > .grid-banner-ad.argames-ad-slot{grid-column:1 / -1!important;grid-row:auto!important;position:relative!important;inset:auto!important;float:none!important;clear:both!important;justify-self:center!important;align-self:stretch!important;width:300px!important;height:100px!important;min-height:100px!important;margin:18px auto!important;z-index:1!important}
+.grid > .card{position:relative!important;grid-column:auto!important;grid-row:auto!important;aspect-ratio:1 / 1!important;min-height:0!important;height:auto!important}
+.grid > .card .thumb{position:absolute!important;inset:0!important;height:100%!important;width:100%!important}
+.ad-row{display:none!important}
+@media(max-width:560px){.grid > .grid-banner-ad.argames-ad-slot{width:300px!important;max-width:calc(100vw - 24px)!important;height:100px!important;min-height:100px!important;grid-column:1 / -1!important;margin:16px auto!important}}

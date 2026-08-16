@@ -118,9 +118,9 @@ function render(){
  if(page>totalPages)page=totalPages;
  const start=(page-1)*PAGE_SIZE;
  const current=visitOrder.slice(start,start+PAGE_SIZE);
- $("popularGrid").innerHTML=current.map((g,i)=>card(g,i)).join("");
- const popularAd=document.getElementById("popularAd");
- if(popularAd) popularAd.innerHTML=`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499097" aria-label="Advertisement 300 x 100"><span>AD SPACE</span><small>300 × 100</small></div>`;
+ const adItem=()=>`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499097" aria-label="Advertisement 300 x 100"><span>AD SPACE</span><small>300 × 100</small></div>`;
+ const withAd=(items,after=8)=>{const out=[];items.forEach((html,i)=>{out.push(html);if(i===after-1)out.push(adItem())});return out.join("")};
+ $("popularGrid").innerHTML=withAd(current.map((g,i)=>card(g,i)),8);
  $("pageInfo").textContent=`${T[lang].page||"PAGE"} ${page} / ${totalPages}`;
  $("catalogCount").textContent=visible.length.toLocaleString();
  $("totalGames").textContent=(isPhone()?games.filter(mobileCompatible).length:games.length).toLocaleString();
@@ -129,11 +129,13 @@ function render(){
  const fresh=[...games].sort((a,b)=>Number(b.id)-Number(a.id)).filter(filter).slice(0,12);
  const multi=games.filter(g=>g.multiplayer&&(!query||String(g.name).toLowerCase().includes(query))).slice(0,12);
  const top=[...visible].sort((a,b)=>(Number(b.rating)-Number(a.rating))||(Number(b.plays)-Number(a.plays))).slice(0,12);
- $("newGrid").innerHTML=fresh.map((g,i)=>card(g,i)).join("");
- const newAd=document.getElementById("newAd");
- if(newAd) newAd.innerHTML=`<div class="grid-banner-ad argames-ad-slot" data-banner-id="1499097" aria-label="Advertisement 300 x 100"><span>AD SPACE</span><small>300 × 100</small></div>`;
- $("multiGrid").innerHTML=multi.map((g,i)=>card(g,i)).join("");
- $("topGrid").innerHTML=top.map((g,i)=>card(g,i)).join("");
+ $("newGrid").innerHTML=withAd(fresh.map((g,i)=>card(g,i)),8);
+ $("multiGrid").innerHTML=withAd(multi.map((g,i)=>card(g,i)),8);
+ $("topGrid").innerHTML=withAd(top.map((g,i)=>card(g,i)),8);
+ if(!window.__argamesAdsRendered){
+   window.__argamesAdsRendered=true;
+   window.dispatchEvent(new Event("argames:rendered"));
+ }
  const heroPick=current[0]||fresh[0];
  if(heroPick){$("heroGameImage").src=heroPick.image;$("heroGameImage").alt=prettyName(heroPick.name);}
 }
