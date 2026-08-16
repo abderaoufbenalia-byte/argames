@@ -427,14 +427,94 @@ footer{text-align:center;border-top:1px solid var(--line);padding:20px;color:#64
 @media(max-width:760px){.argames-ad-slot{width:300px;height:100px;min-height:100px;margin:14px auto}}
 
 
-/* CLICKADILLA / WP AD MANAGER — exact banner containers */
-.argames-ad-slot{position:relative;display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:300px;max-width:calc(100% - 24px);margin:22px auto;overflow:hidden;}
-.argames-ad-slot[data-banner-id="1499081"]{width:300px;height:250px;min-height:250px;}
-.argames-ad-slot[data-banner-id="1499084"],.argames-ad-slot[data-banner-id="1499085"],.argames-ad-slot[data-banner-id="1499086"],.argames-ad-slot[data-banner-id="1499087"]{width:300px;height:100px;min-height:100px;}
-.argames-ad-slot:empty{border:1px dashed rgba(109,255,82,.22);border-radius:12px;background:rgba(7,14,10,.34);}
-.argames-ad-slot:empty::before{content:"ADVERTISEMENT";font:700 10px "DM Sans",sans-serif;letter-spacing:1.5px;color:#405147;pointer-events:none;}
+
+
+/* ARGAMES FINAL CLICKADILLA BANNERS
+   No header ad. Banner containers are 300x100 and distributed through content.
+*/
+.argames-ad-slot{
+  position:relative;
+  width:300px !important;
+  height:100px !important;
+  min-height:100px !important;
+  max-width:calc(100% - 20px);
+  margin:24px auto;
+  padding:0;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px dashed rgba(109,255,82,.22);
+  border-radius:12px;
+  background:rgba(7,14,10,.34);
+}
+.argames-ad-slot::before{
+  content:"ADVERTISEMENT";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font:700 10px "DM Sans",sans-serif;
+  letter-spacing:1.5px;
+  color:#405147;
+  pointer-events:none;
+}
+.argames-ad-slot:not(:empty)::before{display:none}
+.argames-ad-slot iframe,
+.argames-ad-slot img,
+.argames-ad-slot > *{
+  max-width:100%;
+}
+.grid .argames-ad-slot{
+  grid-column:1 / -1 !important;
+  justify-self:center;
+}
 @media(max-width:760px){
- .argames-ad-slot{margin:16px auto;max-width:calc(100vw - 20px);}
- .argames-ad-slot[data-banner-id="1499081"]{width:300px;height:250px;min-height:250px;}
- .argames-ad-slot[data-banner-id="1499084"],.argames-ad-slot[data-banner-id="1499085"],.argames-ad-slot[data-banner-id="1499086"],.argames-ad-slot[data-banner-id="1499087"]{width:300px;height:100px;min-height:100px;}
+  .argames-ad-slot{
+    width:300px !important;
+    height:100px !important;
+    min-height:100px !important;
+    max-width:calc(100vw - 20px);
+    margin:18px auto;
+  }
+  /* Never reserve an ad position in the header/first viewport. */
+  .header-ad,.top-ad,.top-game-ad,.side-game-ad{display:none !important}
+}
+
+/* Square game cards on phone and desktop */
+.card,
+.card.tile-wide,
+.card.tile-tall,
+.card.tile-feature,
+.card.tile-normal,
+.card.tile-square{
+  grid-column:span 1 !important;
+  grid-row:span 1 !important;
+  aspect-ratio:1 / 1 !important;
+}
+.card .thumb,
+.mosaic-grid .card .thumb{
+  aspect-ratio:1 / 1 !important;
+  height:auto !important;
+  min-height:0 !important;
+}
+.card .thumb img,
+.mosaic-grid .card .thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@media(max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .card{min-width:0}
+}
+
+/* Category pages: square thumbnails */
+.cat-game img{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:1 / 1 !important;
+  object-fit:cover !important;
 }

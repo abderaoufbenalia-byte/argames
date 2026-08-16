@@ -1,0 +1,5 @@
+ARGAMES rebuild: ClickAdilla banner layout fixed.
+Five 300x100 spots: 1499097, 1499084, 1499085, 1499086, 1499087.
+No header banner. Homepage, game pages and category pages updated.
+Added ad-test.html for isolated 1499097 testing.
+Old 1499081 / 300x250 placement removed from active HTML/CSS.

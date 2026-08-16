@@ -1,1 +1,83 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARGAMES — Free Online Games</title><meta name="description" content="ARGAMES is a free online gaming portal with thousands of browser games. Play action, racing, puzzle, sports, arcade, shooting and multiplayer games instantly."><meta name="keywords" content="free online games, browser games, HTML5 games, arcade games, racing games, puzzle games, multiplayer games, ARGAMES"><link rel="icon" href="logo.svg"><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><a class="brand" href="index.html"><img src="logo.svg" alt="ARGAMES logo"><span>ARGAMES</span></a><nav class="nav"><a class="active" href="index.html">Home</a><a href="?category=Action">Categories</a><a href="?page=2">New Games</a><a href="?page=3">Popular</a><a href="?page=4">Top Rated</a></nav><div class="actions"><input id="search" class="search" placeholder="Search games..."><button class="lang">🌐 EN⌄</button><button class="menuBtn">☰</button></div></header><div class="layout"><aside class="sidebar"><div class="brand"><img src="logo.svg" alt=""><span>ARGAMES</span></div><div class="sideTitle">Categories</div><div id="cats"></div></aside><main class="main"><div class="hero"><div><div class="eyebrow">WELCOME TO</div><h1>ARGAMES</h1><p>PLAY. ENJOY. WIN.</p><a class="btn primary" href="#discover">🎮 BROWSE GAMES</a></div><img class="heroImg" src="https://img.gamemonetize.com/f35frmezumwujtdqf1vx6m22j3ifc3lv/512x384.jpg" alt="Free browser games"></div><div class="info"><h2>Free Online Games — Play Instantly</h2><p>Discover thousands of free browser games across action, racing, puzzle, sports, shooting, arcade, adventure and multiplayer categories.</p><div class="chips"><a class="chip" href="?category=Action">Action Games</a><a class="chip" href="?category=Racing">Racing Games</a><a class="chip" href="?category=Puzzle">Puzzle Games</a><a class="chip" href="?category=Sports">Sports Games</a><a class="chip" href="?category=Arcade">Arcade Games</a></div></div><section id="discover"><div class="sectionHead"><h2>✦ DISCOVER GAMES</h2><div><span class="count" id="gameCount">5,001</span> games · <span id="categoryLabel">All Games</span> · PAGE <span id="pageCount">1</span></div></div><div id="gameGrid" class="gameGrid"></div><div class="ad-wrap"></div><div id="pagination" class="pagination"></div></section><div class="ad-wrap"></div></main><aside class="rightInfo"><div class="rightItem"><b>◷ PLAY INSTANTLY</b><span>Anywhere, anytime</span></div><div class="rightItem"><b>ϟ FREE FOREVER</b><span>Free browser games</span></div><div class="rightItem"><b>♡ SAFE & SECURE</b><span>Play safely</span></div><div class="rightItem"><b>▣ ALL DEVICES</b><span>PC · Mobile · Tablet</span></div></aside></div><footer class="footer"><div class="brand"><img src="logo.svg" alt=""><span>ARGAMES</span></div><p>Free online browser games — play instantly.</p><div class="ad-wrap"></div></footer><script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="453249"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- ARGAMES-ADS-READY-FOR-NEW-SCRIPTS -->
+<!-- ARGAMES-ADS-FINAL-2026 -->
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ARGAMES — Free Online Games | Play HTML5 Games</title>
+<meta content="Play free online games on ARGAMES. Discover action, racing, puzzle, sports, shooting, multiplayer and 3D HTML5 games with no download." name="description"/>
+<meta content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" name="robots"/>
+<link href="https://argames-dz.online/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="ARGAMES — Free Online Games" property="og:title"/>
+<meta content="Discover and play free online HTML5 games on ARGAMES — action, racing, puzzle, sports, multiplayer and more." property="og:description"/>
+<meta content="https://argames-dz.online/assets/argames-horizontal.png" property="og:image"/>
+<meta content="ARGAMES" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="ARGAMES — Free Online Games" name="twitter:title"/>
+<meta content="Play free HTML5 games online on ARGAMES." name="twitter:description"/>
+<meta content="https://argames-dz.online/assets/argames-horizontal.png" name="twitter:image"/>
+<link href="assets/favicon.png" rel="icon" type="image/png"/>
+<link href="assets/favicon.png" rel="apple-touch-icon"/>
+<link href="style.css" rel="stylesheet"/>
+<script async="" data-admpid="453249" src="https://js.wpadmngr.com/static/adManager.js"></script>
+</head>
+<body>
+<header class="top">
+<a aria-label="ARGAMES home" class="brand" href="index.html"><img alt="ARGAMES" src="assets/argames-horizontal.png"/></a>
+<nav class="topnav">
+<a class="active" data-i18n="home" href="#home">Home</a><a data-i18n="categories" href="#categories">Categories</a><a data-i18n="new" href="#new">New Games</a><a data-i18n="popular" href="#popular">Popular</a><a data-i18n="topRated" href="#top">Top Rated</a>
+</nav>
+<div class="tools">
+<label class="search"><span>⌕</span><input data-i18n-placeholder="search" id="search" placeholder="Search games..."/></label>
+<div class="langbox"><button id="langBtn">🌐 <b id="langCode">EN</b>⌄</button><div class="lang-menu" id="langMenu"></div></div>
+<button aria-expanded="false" aria-label="Open menu" class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+</div>
+</header>
+<div aria-hidden="true" class="mobile-backdrop" id="mobileBackdrop"></div>
+<main id="home">
+<aside class="sidebar" id="categories">
+<div class="side-brand"><img alt="ARGAMES" src="assets/argames-horizontal.png"/></div>
+<div class="side-menu primary-menu">
+<button class="side-item active" data-action="home"><span class="ico">⌂</span><span data-i18n="home">Home</span></button>
+<button class="side-item" data-action="new"><span class="ico">✦</span><span data-i18n="new">New</span></button>
+<button class="side-item" data-action="trending"><span class="ico">♨</span><span data-i18n="trending">Trending this week</span></button>
+<button class="side-item" data-action="originals"><span class="ico">✿</span><span data-i18n="originals">Originals</span></button>
+<button class="side-item" data-action="leaderboard"><span class="ico">♕</span><span data-i18n="leaderboard">Leaderboard</span></button>
+</div>
+<div class="side-divider"></div><div class="side-label" data-i18n="categories">CATEGORIES</div><div id="catList"></div><button class="more-cats" id="moreCats">＋ <span data-i18n="more">More categories</span></button>
+<div class="stats"><b id="totalGames">0</b><small data-i18n="games">GAMES</small></div>
+</aside>
+<section class="content">
+<section class="hero">
+<div class="hero-copy"><span data-i18n="welcome">WELCOME TO</span><h1>ARGAMES</h1><p data-i18n="tagline">PLAY. ENJOY. WIN.</p><div class="hero-buttons"><a class="primary" href="#popular">🎮 <span data-i18n="browse">BROWSE GAMES</span></a><a class="secondary" href="#multiplayer">🌐 <span data-i18n="playOnline">PLAY ONLINE</span></a></div></div>
+<div class="hero-art"><div class="hero-glow"></div><img alt="" class="hero-logo" src="assets/argames-logo.png"/><img alt="" class="hero-game-image" id="heroGameImage"/></div>
+</section>
+<section aria-labelledby="seo-home-title" class="seo-intro">
+<h2 id="seo-home-title">Free Online Games — Play Instantly on ARGAMES</h2>
+<p>ARGAMES is a free online game portal where you can discover and play browser games across racing, action, puzzle, sports, shooting, arcade, adventure and multiplayer categories. Choose a game, read its controls and start playing directly in your browser.</p>
+<nav aria-label="Popular game categories" class="seo-category-links">
+<a href="categories/action-games.html">Action Games</a><a href="categories/racing-games.html">Racing Games</a><a href="categories/puzzle-games.html">Puzzle Games</a><a href="categories/sports-games.html">Sports Games</a><a href="categories/shooting-games.html">Shooting Games</a><a href="categories/arcade-games.html">Arcade Games</a><a href="categories/adventure-games.html">Adventure Games</a><a href="categories/multiplayer-games.html">Multiplayer Games</a><a href="categories/3d-games.html">3D Games</a>
+</nav>
+</section>
+<section class="section" id="popular"><div class="section-head"><div><h2>✦ <span data-i18n="allGamesTitle">DISCOVER GAMES</span></h2><p class="catalog-sub"><span id="catalogCount">0</span> <span data-i18n="catalogGames">games in ARGAMES</span> · <span id="pageInfo">PAGE 1</span></p></div><a class="view-all" href="#popular">↻ <span data-i18n="shuffle">Shuffle</span></a></div><div class="grid mosaic-grid" id="popularGrid"></div><div class="pagination" id="pagination"></div></section><div aria-label="Advertisement" class="argames-ad-slot" data-banner-id="1499097"></div>
+
+<section class="section" id="new"><div class="section-head"><h2>✦ <span data-i18n="newGames">NEW GAMES</span></h2><a class="view-all" href="#new">View all →</a></div><div class="grid" id="newGrid"></div></section><div aria-label="Advertisement" class="argames-ad-slot" data-banner-id="1499084"></div>
+
+<section class="section" id="multiplayer"><div class="section-head"><h2>👥 <span data-i18n="multiplayerGames">MULTIPLAYER GAMES</span></h2><span class="online">● ONLINE</span></div><div class="grid" id="multiGrid"></div></section><div aria-label="Advertisement" class="argames-ad-slot" data-banner-id="1499085"></div>
+
+<section class="section" id="top"><div class="section-head"><h2>★ <span data-i18n="topRated">TOP RATED</span></h2><a class="view-all" href="#top">View all →</a></div><div class="grid" id="topGrid"></div></section><div aria-label="Advertisement" class="argames-ad-slot" data-banner-id="1499086"></div>
+
+</section>
+<aside class="right-rail">
+<div class="rail-points"><div>◷ <b data-i18n="instant">PLAY INSTANTLY</b><small>Anywhere, anytime</small></div><div>ϟ <b data-i18n="free">FREE FOREVER</b><small>100% free games</small></div><div>♡ <b data-i18n="safe">SAFE &amp; SECURE</b><small data-i18n="safeSub">Play safely</small></div><div>▣ <b data-i18n="devices">ALL DEVICES</b><small>PC • Mobile • Tablet</small></div></div>
+</aside>
+</main>
+
+<div aria-label="Advertisement" class="argames-ad-slot" data-banner-id="1499087"></div><footer><div>© 2026 ARGAMES</div><div data-i18n="footer">Play free games online</div>
+
+</footer>
+<script id="site-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ARGAMES","description":"Free online HTML5 games portal.","url":"https://argames-dz.online/","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://argames-dz.online/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
+<script src="seo.js"></script><script src="games.js"></script><script src="app.js"></script>
+</body></html>
